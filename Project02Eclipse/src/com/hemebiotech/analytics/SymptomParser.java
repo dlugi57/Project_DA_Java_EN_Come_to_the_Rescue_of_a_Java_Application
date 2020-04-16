@@ -26,7 +26,6 @@ public class SymptomParser {
             }
         }
 
-        System.out.println(symptomsMap + "\n\n");
         return symptomsMap;
     }
 }

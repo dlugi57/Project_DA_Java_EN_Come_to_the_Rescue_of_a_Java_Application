@@ -8,9 +8,7 @@ public class AnalyticsCounter {
 	private static String readerFilePath = "symptoms.txt";
 	private static String writerFilePath = "result.out";
 
-
 	public static void main(String args[]) {
-
 		ReadSymptomDataFromFile reader = new ReadSymptomDataFromFile(readerFilePath);
 		List<String> symptomList =  reader.GetSymptoms();
 
@@ -19,6 +17,5 @@ public class AnalyticsCounter {
 
 		WriteSymptomDataToFile writer = new WriteSymptomDataToFile(writerFilePath);
 		writer.WriteSymptoms(symptomsMap);
-
 	}
 }

@@ -5,6 +5,9 @@ import java.util.Map;
 import java.io.IOException;
 import java.lang.IllegalStateException;
 
+/**
+ * Simple implementation of file writer
+ */
 public class WriteSymptomDataToFile implements ISymptomWriter {
 
     private String filepath;
@@ -18,11 +21,11 @@ public class WriteSymptomDataToFile implements ISymptomWriter {
 
     @Override
     public void WriteSymptoms(Map<String, Integer> symptoms) {
-
+        //check if list of symptoms is not empty
         if (symptoms.isEmpty()) {
             throw new IllegalStateException("List of symptoms is empty!");
         }
-
+        //try to write symptoms from list to the external file
         try {
             FileWriter writer = new FileWriter(filepath);
 
