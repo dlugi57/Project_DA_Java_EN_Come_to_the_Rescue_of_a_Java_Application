@@ -1,6 +1,7 @@
 package com.hemebiotech.analytics;
 
 import java.util.List;
+import java.util.Map;
 import java.util.TreeMap;
 
 
@@ -16,11 +17,15 @@ public class AnalyticsCounter {
 		List<String> symptomList =  reader.GetSymptoms();
 
 		SymptomParser symptomsPars = new SymptomParser();
-		TreeMap<String, Integer>  symptomsMap = symptomsPars.createOrderedList(symptomList);
+		Map<String, Integer> symptomsMap = symptomsPars.createOrderedList(symptomList);
+
+		//Map<String, Integer> symptomsMap1 = new TreeMap<String,Integer>();
 
 		System.out.println("symptomsMap");
 		System.out.println(symptomsMap+ "\n\n");
 
+		WriteSymptomDataToFile writer = new WriteSymptomDataToFile(writerFilePath);
+		writer.WriteSymptoms(symptomsMap);
 
 
 		// next generate output

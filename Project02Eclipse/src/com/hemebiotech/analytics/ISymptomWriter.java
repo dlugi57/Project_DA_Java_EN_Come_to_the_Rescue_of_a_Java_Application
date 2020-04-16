@@ -1,8 +1,11 @@
 package com.hemebiotech.analytics;
 
 import java.util.List;
+import java.util.Map;
 import java.util.TreeMap;
 
 public interface ISymptomWriter {
-    public void WriteSymptoms ();
+    default void WriteSymptoms(Map<String, Integer> symptoms) {
+
+    }
 }
