@@ -9,7 +9,7 @@ import java.util.Map;
 public interface ISymptomWriter {
     /**
      * @param symptoms the map list of ordered symptoms
-     * @exception  IllegalStateException  if the list of symptoms is empty
+     * @throws IllegalStateException if the list of symptoms is empty
      */
     void WriteSymptoms(Map<String, Integer> symptoms);
 }
