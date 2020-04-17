@@ -6,11 +6,11 @@ import java.util.TreeMap;
 /**
  * Parse unordered list of symptoms
  */
-public class SymptomParser {
+public class SymptomsParser {
     //to order symptoms and store theirs occurrences
     private TreeMap<String, Integer> symptomsMap;
 
-    public SymptomParser() {
+    public SymptomsParser() {
         this.symptomsMap = new TreeMap<>();
     }
 

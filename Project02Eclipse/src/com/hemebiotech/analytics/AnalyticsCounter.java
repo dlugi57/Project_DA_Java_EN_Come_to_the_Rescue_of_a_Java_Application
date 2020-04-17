@@ -17,7 +17,7 @@ public class AnalyticsCounter {
         ReadSymptomDataFromFile reader = new ReadSymptomDataFromFile(readerFilePath);
         List<String> symptomList = reader.GetSymptoms();
 
-        SymptomParser symptomsPars = new SymptomParser();
+        SymptomsParser symptomsPars = new SymptomsParser();
         Map<String, Integer> symptomsMap = symptomsPars.createOrderedList(symptomList);
 
         WriteSymptomDataToFile writer = new WriteSymptomDataToFile(writerFilePath);
