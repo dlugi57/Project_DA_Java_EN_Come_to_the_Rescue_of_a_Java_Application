@@ -1,7 +1,10 @@
 package com.hemebiotech.analytics;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * @author Dlugosz Piotr
@@ -9,18 +12,28 @@ import java.util.Map;
  */
 public class AnalyticsCounter {
 
+    private static final Logger logger = Logger.getLogger(SymptomDataToFileWriter.class.getName());
+
     //init of input and output file paths
     private static String readerFilePath = "symptoms.txt";
     private static String writerFilePath = "result.out";
 
     public static void main(String args[]) {
-        ReadSymptomDataFromFile reader = new ReadSymptomDataFromFile(readerFilePath);
-        List<String> symptomList = reader.GetSymptoms();
+        try {
+            ISymptomReader reader = new SymptomDataFromFileReader(readerFilePath);
+            List<String> symptomList = reader.getSymptoms();
 
-        SymptomsParser symptomsPars = new SymptomsParser();
-        Map<String, Integer> symptomsMap = symptomsPars.createOrderedList(symptomList);
+            SymptomsParser symptomsPars = new SymptomsParser();
+            Map<String, Integer> symptomsMap = symptomsPars.createOrderedList(symptomList);
 
-        WriteSymptomDataToFile writer = new WriteSymptomDataToFile(writerFilePath);
-        writer.WriteSymptoms(symptomsMap);
+            ISymptomWriter writer = new SymptomDataToFileWriter(writerFilePath);
+            writer.writeSymptoms(symptomsMap);
+        } catch (IOException e) {
+            logger.log(Level.WARNING, "AnalyticsCounter get an error: " + e);
+            e.printStackTrace();
+        }catch (IllegalStateException e) {
+            logger.log(Level.WARNING, "AnalyticsCounter get an error: " + e);
+            e.printStackTrace();
+        }
     }
 }

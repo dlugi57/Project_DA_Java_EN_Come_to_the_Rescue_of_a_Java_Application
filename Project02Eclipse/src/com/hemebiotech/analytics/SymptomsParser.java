@@ -1,14 +1,19 @@
 package com.hemebiotech.analytics;
 
 import java.util.List;
+import java.util.Map;
+import java.util.SortedMap;
 import java.util.TreeMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Parse unordered list of symptoms
  */
 public class SymptomsParser {
+
     //to order symptoms and store theirs occurrences
-    private TreeMap<String, Integer> symptomsMap;
+    private Map<String, Integer> symptomsMap;
 
     public SymptomsParser() {
         this.symptomsMap = new TreeMap<>();
@@ -18,7 +23,7 @@ public class SymptomsParser {
      * @param symptoms unordered list of symptoms
      * @return sorted symptomsMap list of : key - symptom, value - occurrences
      */
-    public TreeMap<String, Integer> createOrderedList(List<String> symptoms) {
+    public Map<String, Integer> createOrderedList(List<String> symptoms) throws IllegalStateException {
 
         if (symptoms.isEmpty()) {
             throw new IllegalStateException("List of symptoms is empty!");
