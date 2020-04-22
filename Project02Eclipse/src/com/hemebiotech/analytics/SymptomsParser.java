@@ -13,7 +13,7 @@ public class SymptomsParser {
     private Map<String, Integer> symptomsMap;
 
     public SymptomsParser() {
-        this.symptomsMap = new TreeMap<>();
+        this.symptomsMap = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
     }
 
     /**
@@ -27,7 +27,9 @@ public class SymptomsParser {
         }
         //loop threw unordered symptoms list to find occurrences and count them
         for (String symptom : symptoms) {
-
+            if (symptom == null || symptom.equals("") || symptom.isEmpty()){
+                continue;
+            }
             if (symptomsMap.containsKey(symptom)) {
                 symptomsMap.put(symptom, symptomsMap.get(symptom) + 1);
             } else {
