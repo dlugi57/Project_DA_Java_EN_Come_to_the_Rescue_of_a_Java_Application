@@ -5,8 +5,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Simple brute force implementation
@@ -24,7 +22,7 @@ public class SymptomDataFromFileReader implements ISymptomReader {
 
     @Override
     public List<String> getSymptoms() throws IOException {
-        ArrayList<String> result = new ArrayList<String>();
+        ArrayList<String> result = new ArrayList<>();
 
         if (filepath != null) {
             BufferedReader reader = null;
@@ -38,7 +36,9 @@ public class SymptomDataFromFileReader implements ISymptomReader {
                 }
                 reader.close();
             } catch (IOException e) {
-                reader.close();
+                if (reader != null) {
+                    reader.close();
+                }
                 e.printStackTrace();
             }
         }

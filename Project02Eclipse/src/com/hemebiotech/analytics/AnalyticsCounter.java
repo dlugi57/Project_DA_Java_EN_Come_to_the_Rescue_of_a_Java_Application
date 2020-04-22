@@ -15,10 +15,10 @@ public class AnalyticsCounter {
     private static final Logger logger = Logger.getLogger(SymptomDataToFileWriter.class.getName());
 
     //init of input and output file paths
-    private static String readerFilePath = "symptoms.txt";
-    private static String writerFilePath = "result.out";
+    private static final String readerFilePath = "symptoms.txt";
+    private static final String writerFilePath = "result.out";
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         try {
             ISymptomReader reader = new SymptomDataFromFileReader(readerFilePath);
             List<String> symptomList = reader.getSymptoms();
@@ -28,10 +28,7 @@ public class AnalyticsCounter {
 
             ISymptomWriter writer = new SymptomDataToFileWriter(writerFilePath);
             writer.writeSymptoms(symptomsMap);
-        } catch (IOException e) {
-            logger.log(Level.WARNING, "AnalyticsCounter get an error: " + e);
-            e.printStackTrace();
-        }catch (IllegalStateException e) {
+        } catch (IOException | IllegalStateException e) {
             logger.log(Level.WARNING, "AnalyticsCounter get an error: " + e);
             e.printStackTrace();
         }

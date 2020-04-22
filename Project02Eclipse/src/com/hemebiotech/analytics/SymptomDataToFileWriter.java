@@ -1,10 +1,8 @@
 package com.hemebiotech.analytics;
 
 import java.io.FileWriter;
-import java.util.Map;
 import java.io.IOException;
-import java.lang.IllegalStateException;
-import java.util.logging.Level;
+import java.util.Map;
 import java.util.logging.Logger;
 
 /**
@@ -48,7 +46,9 @@ public class SymptomDataToFileWriter implements ISymptomWriter {
             writer.close();
 
         } catch (IOException e) {
-            writer.close();
+            if (writer != null) {
+                writer.close();
+            }
             e.printStackTrace();
         }
     }

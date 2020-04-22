@@ -2,10 +2,7 @@ package com.hemebiotech.analytics;
 
 import java.util.List;
 import java.util.Map;
-import java.util.SortedMap;
 import java.util.TreeMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Parse unordered list of symptoms
