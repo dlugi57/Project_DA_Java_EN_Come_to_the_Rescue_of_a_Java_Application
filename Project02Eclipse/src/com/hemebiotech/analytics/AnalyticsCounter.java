@@ -29,7 +29,7 @@ public class AnalyticsCounter {
             ISymptomWriter writer = new SymptomDataToFileWriter(writerFilePath);
             writer.writeSymptoms(symptomsMap);
         } catch (IOException | IllegalStateException e) {
-            logger.log(Level.WARNING, "AnalyticsCounter find an error: " + e);
+            logger.log(Level.WARNING, "AnalyticsCounter found an error: " + e);
             e.printStackTrace();
         }
     }
