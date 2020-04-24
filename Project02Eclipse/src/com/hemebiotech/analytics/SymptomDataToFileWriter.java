@@ -33,7 +33,6 @@ public class SymptomDataToFileWriter implements ISymptomWriter {
         //try to write symptoms from list to the external file
         try {
             writer = new FileWriter(filepath);
-
             for (Map.Entry<String, Integer> symptom : symptoms.entrySet()) {
                 String key = symptom.getKey();
                 Integer value = symptom.getValue();

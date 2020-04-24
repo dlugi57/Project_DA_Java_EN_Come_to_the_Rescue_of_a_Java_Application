@@ -23,13 +23,14 @@ public class SymptomDataFromFileReader implements ISymptomReader {
     @Override
     public List<String> getSymptoms() throws IOException {
         ArrayList<String> result = new ArrayList<>();
-
+        //check if filepath exist
         if (filepath != null) {
+            //initialize reader
             BufferedReader reader = null;
             try {
                 reader = new BufferedReader(new FileReader(filepath));
                 String line = reader.readLine();
-
+                //loop threw every symptoms lines
                 while (line != null) {
                     result.add(line);
                     line = reader.readLine();
@@ -42,7 +43,6 @@ public class SymptomDataFromFileReader implements ISymptomReader {
                 e.printStackTrace();
             }
         }
-
         return result;
     }
 
