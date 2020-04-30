@@ -3,6 +3,7 @@ package com.hemebiotech.analytics;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Map;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -12,7 +13,7 @@ public class SymptomDataToFileWriter implements ISymptomWriter {
 
     private static final Logger logger = Logger.getLogger(SymptomDataToFileWriter.class.getName());
     //filepath of the symptoms ordered list
-    private String filepath;
+    private final String filepath;
 
     /**
      * @param filepath a full or partial path to file where the symptoms need to be write
@@ -30,9 +31,8 @@ public class SymptomDataToFileWriter implements ISymptomWriter {
         //initialize writer
         FileWriter writer = new FileWriter(filepath);
 
-        //try to write symptoms from list to the external file
-        //@TODO: make function of null at this place
         try {
+            //write symptoms from list to the external file
             for (Map.Entry<String, Integer> symptom : symptoms.entrySet()) {
                 String key = symptom.getKey();
                 Integer value = symptom.getValue();
@@ -40,14 +40,11 @@ public class SymptomDataToFileWriter implements ISymptomWriter {
 
                 logger.info("Symptom line written: " + key + " => " + value);
             }
-
-            logger.info("Write process success, check file: " + filepath + " to see the ordered symptom list with occurrences");
             writer.close();
-
+            logger.info("Write process success, check file: " + filepath + " to see the ordered symptom list with occurrences");
         } catch (IOException e) {
-                writer.close();
-            //e.printStackTrace();
-            //@TODO:make the loger here
+            writer.close();
+            logger.log(Level.WARNING, "Error when write data into file: " + e);
         }
     }
 }

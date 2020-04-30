@@ -10,7 +10,7 @@ import java.util.TreeMap;
 public class SymptomsParser {
 
     //to order symptoms and store theirs occurrences
-    private Map<String, Integer> symptomsMap;
+    private final Map<String, Integer> symptomsMap;
 
     public SymptomsParser() {
         //put case insensitive order option to prevent character differences
@@ -28,13 +28,10 @@ public class SymptomsParser {
         }
         //loop threw unordered symptoms list to find occurrences and count them
         for (String symptom : symptoms) {
-            //if symptom doesn't exist skip to the another
-            if (symptom != null && !symptom.isEmpty()){
-                if (symptomsMap.containsKey(symptom)) {
-                    symptomsMap.put(symptom, symptomsMap.get(symptom) + 1);
-                } else {
-                    symptomsMap.put(symptom, 1);
-                }
+            if (symptomsMap.containsKey(symptom)) {
+                symptomsMap.put(symptom, symptomsMap.get(symptom) + 1);
+            } else {
+                symptomsMap.put(symptom, 1);
             }
         }
         return symptomsMap;
