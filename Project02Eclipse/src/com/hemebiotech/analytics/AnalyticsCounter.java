@@ -19,6 +19,7 @@ public class AnalyticsCounter {
     private static final String writerFilePath = "result.out";
 
     public static void main(String[] args) {
+        //@TODO:delete the try catch
         try {
             ISymptomReader reader = new SymptomDataFromFileReader(readerFilePath);
             List<String> symptomList = reader.getSymptoms();

@@ -26,9 +26,8 @@ public class SymptomDataFromFileReader implements ISymptomReader {
         //check if filepath exist
         if (filepath != null) {
             //initialize reader
-            BufferedReader reader = null;
+            BufferedReader reader = new BufferedReader(new FileReader(filepath));
             try {
-                reader = new BufferedReader(new FileReader(filepath));
                 String line = reader.readLine();
                 //loop threw every symptoms lines
                 while (line != null) {
@@ -37,9 +36,7 @@ public class SymptomDataFromFileReader implements ISymptomReader {
                 }
                 reader.close();
             } catch (IOException e) {
-                if (reader != null) {
-                    reader.close();
-                }
+                      reader.close();
                 e.printStackTrace();
             }
         }

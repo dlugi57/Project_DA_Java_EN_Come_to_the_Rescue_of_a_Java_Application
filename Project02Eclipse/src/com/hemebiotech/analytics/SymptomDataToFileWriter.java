@@ -28,11 +28,11 @@ public class SymptomDataToFileWriter implements ISymptomWriter {
             throw new IllegalStateException("List of symptoms is empty!");
         }
         //initialize writer
-        FileWriter writer = null;
+        FileWriter writer = new FileWriter(filepath);
 
         //try to write symptoms from list to the external file
+        //@TODO: make function of null at this place
         try {
-            writer = new FileWriter(filepath);
             for (Map.Entry<String, Integer> symptom : symptoms.entrySet()) {
                 String key = symptom.getKey();
                 Integer value = symptom.getValue();
@@ -45,10 +45,9 @@ public class SymptomDataToFileWriter implements ISymptomWriter {
             writer.close();
 
         } catch (IOException e) {
-            if (writer != null) {
                 writer.close();
-            }
-            e.printStackTrace();
+            //e.printStackTrace();
+            //@TODO:make the loger here
         }
     }
 }

@@ -29,13 +29,12 @@ public class SymptomsParser {
         //loop threw unordered symptoms list to find occurrences and count them
         for (String symptom : symptoms) {
             //if symptom doesn't exist skip to the another
-            if (symptom == null || symptom.equals("") || symptom.isEmpty()){
-                continue;
-            }
-            if (symptomsMap.containsKey(symptom)) {
-                symptomsMap.put(symptom, symptomsMap.get(symptom) + 1);
-            } else {
-                symptomsMap.put(symptom, 1);
+            if (symptom != null && !symptom.isEmpty()){
+                if (symptomsMap.containsKey(symptom)) {
+                    symptomsMap.put(symptom, symptomsMap.get(symptom) + 1);
+                } else {
+                    symptomsMap.put(symptom, 1);
+                }
             }
         }
         return symptomsMap;
