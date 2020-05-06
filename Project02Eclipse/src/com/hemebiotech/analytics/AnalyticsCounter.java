@@ -24,7 +24,7 @@ public class AnalyticsCounter {
             List<String> symptomList = reader.getSymptoms();
 
             SymptomsParser symptomsPars = new SymptomsParser();
-            Map<String, Integer> symptomsMap = symptomsPars.createOrderedList(symptomList);
+            Map<String, Integer> symptomsMap = symptomsPars.createOrderedMap(symptomList);
 
             ISymptomWriter writer = new SymptomDataToFileWriter(writerFilePath);
             writer.writeSymptoms(symptomsMap);
@@ -32,4 +32,6 @@ public class AnalyticsCounter {
             logger.log(Level.WARNING, "AnalyticsCounter found an error: " + e);
         }
     }
+
+    // todo create methods for every class in main
 }

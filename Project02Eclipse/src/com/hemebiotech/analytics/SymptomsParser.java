@@ -21,7 +21,7 @@ public class SymptomsParser {
      * @param symptoms unordered list of symptoms
      * @return sorted symptomsMap list of : key - symptom, value - occurrences
      */
-    public Map<String, Integer> createOrderedList(List<String> symptoms) throws IllegalStateException {
+    public Map<String, Integer> createOrderedMap(List<String> symptoms) throws IllegalStateException {
 
         if (symptoms.isEmpty()) {
             throw new IllegalStateException("List of symptoms is empty!");

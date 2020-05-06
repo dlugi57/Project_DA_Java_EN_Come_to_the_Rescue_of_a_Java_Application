@@ -46,5 +46,6 @@ public class SymptomDataToFileWriter implements ISymptomWriter {
             writer.close();
             logger.log(Level.WARNING, "Error when write data into file: " + e);
         }
+        // TODO finally
     }
 }

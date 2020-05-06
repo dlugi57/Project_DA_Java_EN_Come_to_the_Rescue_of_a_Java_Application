@@ -27,8 +27,7 @@ public class SymptomDataFromFileReader implements ISymptomReader {
     public List<String> getSymptoms() throws IOException {
         ArrayList<String> result = new ArrayList<>();
         //initialize reader
-        BufferedReader reader = new BufferedReader(new FileReader(filepath));
-        try {
+        try (BufferedReader reader = new BufferedReader(new FileReader(filepath))){
             String line = reader.readLine();
             //loop threw every symptoms lines
             while (line != null) {
@@ -38,11 +37,11 @@ public class SymptomDataFromFileReader implements ISymptomReader {
                 }
                 line = reader.readLine();
             }
-            reader.close();
+            //reader.close();
         } catch (IOException e) {
-            reader.close();
             logger.log(Level.WARNING, "Error when reading file: " + e);
         }
+        //todo finally a etudie
         return result;
     }
 }
