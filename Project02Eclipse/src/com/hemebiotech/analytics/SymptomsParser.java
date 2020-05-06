@@ -18,6 +18,7 @@ public class SymptomsParser {
     }
 
     /**
+     * Create ordered map with counted occurrences
      * @param symptoms unordered list of symptoms
      * @return sorted symptomsMap list of : key - symptom, value - occurrences
      */

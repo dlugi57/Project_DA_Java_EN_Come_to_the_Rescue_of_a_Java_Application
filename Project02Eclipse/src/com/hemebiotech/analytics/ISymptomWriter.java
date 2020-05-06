@@ -1,6 +1,5 @@
 package com.hemebiotech.analytics;
 
-import java.io.IOException;
 import java.util.Map;
 
 /**
@@ -12,5 +11,5 @@ public interface ISymptomWriter {
      * @param symptoms the map list of ordered symptoms
      * @throws IllegalStateException if the list of symptoms is empty
      */
-    void writeSymptoms(Map<String, Integer> symptoms) throws IOException;
+    void writeSymptoms(Map<String, Integer> symptoms);
 }

@@ -24,7 +24,7 @@ public class SymptomDataFromFileReader implements ISymptomReader {
     }
 
     @Override
-    public List<String> getSymptoms() throws IOException {
+    public List<String> getSymptoms() {
         ArrayList<String> result = new ArrayList<>();
         //initialize reader
         try (BufferedReader reader = new BufferedReader(new FileReader(filepath))){
@@ -37,11 +37,9 @@ public class SymptomDataFromFileReader implements ISymptomReader {
                 }
                 line = reader.readLine();
             }
-            //reader.close();
         } catch (IOException e) {
             logger.log(Level.WARNING, "Error when reading file: " + e);
         }
-        //todo finally a etudie
         return result;
     }
 }

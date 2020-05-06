@@ -23,15 +23,13 @@ public class SymptomDataToFileWriter implements ISymptomWriter {
     }
 
     @Override
-    public void writeSymptoms(Map<String, Integer> symptoms) throws IllegalStateException, IOException {
+    public void writeSymptoms(Map<String, Integer> symptoms) throws IllegalStateException {
         //check if list of symptoms is not empty
         if (symptoms.isEmpty()) {
             throw new IllegalStateException("List of symptoms is empty!");
         }
-        //initialize writer
-        FileWriter writer = new FileWriter(filepath);
 
-        try {
+        try (FileWriter writer = new FileWriter(filepath)){
             //write symptoms from list to the external file
             for (Map.Entry<String, Integer> symptom : symptoms.entrySet()) {
                 String key = symptom.getKey();
@@ -40,12 +38,9 @@ public class SymptomDataToFileWriter implements ISymptomWriter {
 
                 logger.info("Symptom line written: " + key + " => " + value);
             }
-            writer.close();
             logger.info("Write process success, check file: " + filepath + " to see the ordered symptom list with occurrences");
         } catch (IOException e) {
-            writer.close();
             logger.log(Level.WARNING, "Error when write data into file: " + e);
         }
-        // TODO finally
     }
 }
